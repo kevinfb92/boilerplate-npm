@@ -1,7 +1,13 @@
 require('dotenv').config();
 var mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGO_URI)
+.then(function(val){
+  console.log("Connected");
+})
+.catch(function(error){
+  console.log("Error "+error)
+});
 
 
 let Person;
