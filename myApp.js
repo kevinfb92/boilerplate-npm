@@ -42,10 +42,16 @@ const createManyPeople = (arrayOfPeople, done) => {
     console.log("Saved persons to db");
     done(null, data);
   });
-  done(null, data);
 };
 
 const findPeopleByName = (personName, done) => {
+  Person.find({name: personName}, (err, data)=>{
+    if(err){
+      return console.error(err);
+    } 
+    console.log("Found coincidences");
+    done(null, data);
+  })
   done(null /*, data*/);
 };
 
