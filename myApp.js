@@ -52,11 +52,16 @@ const findPeopleByName = (personName, done) => {
     console.log("Found coincidences");
     done(null, data);
   })
-  done(null /*, data*/);
 };
 
 const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+  Person.findOne({favoriteFoods:food}, (err, data)=>{
+    if(err){
+      return console.error(err);
+    }
+    console.log("Found coincidence by food");
+    done(null, data);
+  })
 };
 
 const findPersonById = (personId, done) => {
