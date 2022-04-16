@@ -3,14 +3,21 @@ var mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGO_URI)
 .then(function(val){
-  console.log("Connected");
+  console.log("Connected to database");
 })
 .catch(function(error){
   console.log("Error "+error)
 });
 
+let personSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true},
+    age: Number,
+    favoriteFoods: {type: [String]}
+  }
+)
 
-let Person;
+let Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
